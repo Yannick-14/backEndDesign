@@ -1,4 +1,4 @@
-import "reflect-metadata";
+import 'reflect-metadata';
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
@@ -35,8 +35,8 @@ AppDataSource.initialize()
     app.use(userRoutes);
 
     // Récupérer les variables d'environnement avec des valeurs par défaut
-    const PORT =  3000;
-    const HOST =  'localhost';
+    const PORT = process.env.PORT || 3000;
+    const HOST = process.env.HOST || 'localhost';
 
     // Démarrer le serveur
     app.listen(Number(PORT), HOST, () => {

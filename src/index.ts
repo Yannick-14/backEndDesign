@@ -36,7 +36,7 @@ AppDataSource.initialize()
 
     // Récupérer les variables d'environnement avec des valeurs par défaut
     const PORT = process.env.PORT || 0; // 0 permet au système d'exploitation de choisir un port disponible
-    const HOST = process.env.HOST || '0.0.0.0';
+    const HOST = '0.0.0.0'; //process.env.HOST || 
 
     // Démarrer le serveur
     const server = app.listen(Number(PORT), HOST, () => {

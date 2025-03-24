@@ -32,11 +32,11 @@ AppDataSource.initialize()
     app.use(express.json());
 
     // Utilisation des routes définies dans le fichier router
-    app.use('/api', userRoutes);
+    app.use(userRoutes);
 
     // Récupérer les variables d'environnement avec des valeurs par défaut
-    const PORT = process.env.PORT || 3000;
-    const HOST = process.env.HOST || 'localhost';
+    const PORT =  3000;
+    const HOST =  'localhost';
 
     // Démarrer le serveur
     app.listen(Number(PORT), HOST, () => {

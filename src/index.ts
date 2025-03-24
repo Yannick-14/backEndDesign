@@ -35,12 +35,17 @@ AppDataSource.initialize()
     app.use(userRoutes);
 
     // Récupérer les variables d'environnement avec des valeurs par défaut
-    const PORT = process.env.PORT || 3000;
+    const PORT = process.env.PORT || 0; // 0 permet au système d'exploitation de choisir un port disponible
     const HOST = process.env.HOST || '0.0.0.0';
 
     // Démarrer le serveur
-    app.listen(Number(PORT), HOST, () => {
-      console.log(`Serveur démarré sur http://${HOST}:${PORT}`);
+    const server = app.listen(Number(PORT), HOST, () => {
+      const address = server.address();
+      if (typeof address === 'string') {
+        console.log(`Serveur démarré sur ${address}`);
+      } else {
+        console.log(`Serveur démarré sur http://${HOST}:${address.port}`);
+      }
     });
   })
   .catch((error) => {
